@@ -101,7 +101,7 @@ spec:
                 path: banner.txt
         - name: footer
           secret:
-            secretName: shop-config2
+            secretName: shop-config
             optional: true
             items:
               - key: FOOTER
