@@ -7,7 +7,7 @@ resources:
   - namespace.yaml
   - api.yaml
   - web.yaml
-  - external-secret.yaml
+  #- external-secret.yaml
   - secret-store.yaml
   - web-public.yaml
   # --- Заняття 10, практика 1: вхід з інтернету ---------------------------
