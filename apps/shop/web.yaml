@@ -99,12 +99,12 @@ spec:
             items:
               - key: BANNER
                 path: banner.txt
-        - name: banner
+        - name: footer
           secret:
             secretName: shop-config
             optional: true
             items:
-              - key: footer
+              - key: FOOTER
                 path: footer.txt
 ---
 apiVersion: v1
