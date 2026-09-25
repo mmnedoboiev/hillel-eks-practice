@@ -73,6 +73,9 @@ spec:
             - name: banner
               mountPath: /etc/shop/banner
               readOnly: true
+            - name: footer
+              mountPath: /etc/shop/banner
+              readOnly: true
       volumes:
         - name: conf
           configMap:
