@@ -24,6 +24,11 @@ data:
         alias /etc/shop/banner/banner.txt;
       }
 
+      location = /footer {
+        default_type text/plain;
+        alias /etc/shop/banner/footer.txt;
+      }
+
       location / {
         default_type text/plain;
         return 200 'shop web on EKS, delivered by Flux. try /api/ and /banner\n';
@@ -37,7 +42,7 @@ metadata:
   labels:
     app: web
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: web
@@ -91,6 +96,13 @@ spec:
             items:
               - key: BANNER
                 path: banner.txt
+        - name: banner
+          secret:
+            secretName: shop-config
+            optional: true
+            items:
+              - key: footer
+                path: footer.txt
 ---
 apiVersion: v1
 kind: Service
