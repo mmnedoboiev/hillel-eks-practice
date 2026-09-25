@@ -26,7 +26,7 @@ data:
 
       location = /footer {
         default_type text/plain;
-        alias /etc/shop/banner/footer.txt;
+        alias /etc/shop/footer/footer.txt;
       }
 
       location / {
@@ -74,7 +74,7 @@ spec:
               mountPath: /etc/shop/banner
               readOnly: true
             - name: footer
-              mountPath: /etc/shop/banner
+              mountPath: /etc/shop/footer
               readOnly: true
       volumes:
         - name: conf
