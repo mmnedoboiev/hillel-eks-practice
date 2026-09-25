@@ -128,3 +128,8 @@ variable "cluster_admin_arns" {
     error_message = "Кожен елемент має бути ARN вигляду arn:aws:iam::123456789012:user/ім'я."
   }
 }
+
+variable "cluster_name" {
+  type = string
+  default = "nnedoboev-eks"
+}

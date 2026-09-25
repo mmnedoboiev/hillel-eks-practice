@@ -13,6 +13,10 @@
 # GitRepository на той самий репозиторій — трохи зайвої роботи для
 # source-controller, зате жодного нового інструмента.
 # ---------------------------------------------------------------------------
+
+data "aws_eks_cluster" "this" {
+  name = "nnedoboev-eks" # замініть на вашу реальну назву кластера
+}
 resource "helm_release" "infra_sync" {
   name       = "infra-sync"
   repository = "https://fluxcd-community.github.io/helm-charts"
