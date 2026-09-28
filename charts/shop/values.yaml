@@ -18,7 +18,7 @@ web:
 api:
   replicas: 1
   version: "1"
-
+  message: "shop api on EKS, installed by Helm"
 # Секрети з Parameter Store через External Secrets Operator (заняття 10).
 secrets:
   enabled: true
