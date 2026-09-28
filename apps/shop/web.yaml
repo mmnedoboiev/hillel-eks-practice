@@ -24,11 +24,6 @@ data:
         alias /etc/shop/banner/banner.txt;
       }
 
-      location = /footer {
-        default_type text/plain;
-        alias /etc/shop/footer/footer.txt;
-      }
-
       location / {
         default_type text/plain;
         return 200 'shop web on EKS, delivered by Flux. try /api/ and /banner\n';
@@ -73,9 +68,6 @@ spec:
             - name: banner
               mountPath: /etc/shop/banner
               readOnly: true
-            - name: footer
-              mountPath: /etc/shop/footer
-              readOnly: true
       volumes:
         - name: conf
           configMap:
@@ -99,13 +91,6 @@ spec:
             items:
               - key: BANNER
                 path: banner.txt
-        - name: footer
-          secret:
-            secretName: shop-config
-            optional: true
-            items:
-              - key: FOOTER
-                path: footer.txt
 ---
 apiVersion: v1
 kind: Service
