@@ -11,7 +11,7 @@ data:
       location /healthz { return 200 'ok'; }
       location / {
         default_type application/json;
-        return 200 '{"service":"api","version":"{{ .Values.api.version }}","release":"{{ .Release.Name }}","message":"{{ .Values.api.message }}"}';
+        return 200 '{"service":"api","version":"{{ .Values.api.version }}","release":"{{ .Release.Name }}"}';
       }
     }
 ---
@@ -33,7 +33,9 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          # Порожній image.tag означає «взяти appVersion чарту» — так CI
+          # однією версією задає і чарт, і образ (заняття 12).
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           ports:
             - containerPort: 80
           {{- if .Values.secrets.enabled }}
